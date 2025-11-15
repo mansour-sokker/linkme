@@ -1,0 +1,109 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ====== GLOBAL DARK MODE OVERRIDES ====== */
+
+/* الجسم بالكامل */
+body.dark {
+  background: #0f172a !important;
+  color: #e2e8f0 !important;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* روابط النافبار */
+.nav-link {
+  position: relative;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+/* لمعان عند الهوفر */
+.nav-link:hover {
+  color: #ffffff;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0%;
+  height: 2px;
+  background: white;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* الوضع الداكن — روابط */
+body.dark .nav-link {
+  color: #cbd5e1;
+}
+
+body.dark .nav-link:hover {
+  color: #ffffff;
+}
+
+/* زر الوضع الداكن */
+.theme-toggle {
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+body.dark .theme-toggle:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+/* صور Light/Dark */
+img[data-light][data-dark] {
+  content: attr(data-light);
+}
+
+body.dark img[data-light][data-dark] {
+  content: attr(data-dark);
+}
+

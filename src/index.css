@@ -1,0 +1,248 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =============================
+   SLIDE IN / OUT ANIMATIONS
+============================= */
+@keyframes slideInRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to   { transform: translateX(0); opacity: 1; }
+}
+
+.animate-slideInRight {
+  animation: slideInRight 0.4s ease-out forwards;
+}
+
+@keyframes slideOutRight {
+  from { transform: translateX(0); opacity: 1; }
+  to   { transform: translateX(100%); opacity: 0; }
+}
+
+.animate-slideOutRight {
+  animation: slideOutRight 0.3s ease-in forwards;
+}
+
+/* =============================
+   FLOATING BLOBS
+============================= */
+@keyframes blob {
+  0%   { transform: translateY(0) scale(1);     opacity: 0.9; }
+  33%  { transform: translateY(-8px) scale(1.05); opacity: 0.95; }
+  66%  { transform: translateY(0) scale(1);     opacity: 0.9; }
+  100% { transform: translateY(0) scale(1);     opacity: 0.9; }
+}
+
+.animate-blob { animation: blob 6s infinite; }
+.animation-delay-2000 { animation-delay: 2s; }
+.animation-delay-4000 { animation-delay: 4s; }
+
+/* =============================
+   ICON FLOATING
+============================= */
+@keyframes floatIcon {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-12px); }
+  100% { transform: translateY(0); }
+}
+
+.floating-icon {
+  width: 50px; height: 50px;
+  border-radius: 9999px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  animation: floatIcon 4s ease-in-out infinite;
+  backdrop-filter: blur(4px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.floating-icon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+.delay-1 { animation-delay: 0s; }
+.delay-2 { animation-delay: 1s; }
+.delay-3 { animation-delay: 2s; }
+
+/* =============================
+   MARQUEE TEXT
+============================= */
+@keyframes marquee {
+  0%   { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: inline-flex;
+  min-width: 200%;
+  animation: marquee 14s linear infinite;
+}
+
+/* =============================
+   COUNTER
+============================= */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.counter { animation: countUp 1s ease forwards; }
+
+/* =============================
+   FEATURE CARDS
+============================= */
+.feature-card {
+  @apply rounded-3xl shadow-lg p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden;
+}
+
+.feature-icon {
+  @apply text-4xl mb-4 w-16 h-16 flex items-center justify-center rounded-2xl shadow-inner;
+}
+
+.feature-title { @apply text-2xl font-bold mb-3; }
+.feature-text  { @apply text-sky-navy/80 text-base leading-relaxed; }
+
+/* =============================
+   HOW CARDS
+============================= */
+.how-card {
+  @apply bg-white rounded-3xl shadow-md p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl;
+  animation: fadeUp 0.8s ease both;
+}
+
+.how-icon  { @apply w-16 h-16 flex items-center justify-center rounded-full text-3xl font-bold mx-auto mb-5; }
+.how-title { @apply text-2xl font-bold text-sky-navy mb-3; }
+.how-text  { @apply text-sky-navy/70 text-base leading-relaxed; }
+
+/* =============================
+   FADE UP
+============================= */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* =============================
+   TESTIMONIALS
+============================= */
+.testimonial-card {
+  @apply bg-white/80 rounded-3xl shadow-md p-8 text-left backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl;
+}
+
+.testimonial-text {
+  @apply text-[#384f7d]/80 text-base leading-relaxed mb-6 italic;
+}
+
+.testimonial-user { @apply flex items-center gap-4; }
+
+/* =============================
+   DOTS
+============================= */
+.dot {
+  @apply w-3 h-3 md:w-4 md:h-4 rounded-full bg-[#c1b0d9]/50 transition-all duration-300;
+}
+
+.dot.active {
+  @apply bg-gradient-to-r from-[#7a86b6] to-[#a79cc7] w-6 md:w-8;
+}
+
+.dot:hover { @apply bg-[#a79cc7]/80 cursor-pointer scale-110; }
+
+/* =============================
+   GLOBAL LIGHT MODE
+============================= */
+
+body {
+  background: #f5f4fb;
+  color: #384f7d;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* =============================
+   DARK MODE
+============================= */
+body.dark {
+  background: #121212 !important;
+  color: white !important;
+}
+
+body.dark .card {
+  background-color: #1a1a2e;
+}
+
+body.dark .header {
+  background-color: #2a2a33;
+}
+
+/* TEXT FIX */
+.text-custom-384f7d { color: #384f7d; }
+.dark .text-custom-384f7d { color: #cbd5e1 !important; }
+
+/* =============================
+   NAVBAR LINKS (Unified)
+============================= */
+.nav-link {
+  @apply text-sky-navy dark:text-white hover:text-purple-500 transition-colors cursor-pointer relative pb-1;
+}
+
+/* underline effect */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -3px;
+  width: 100%; height: 2px;
+  background: linear-gradient(to right, #5561ff, #8f92ff);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+  border-radius: 4px;
+}
+
+.nav-link:hover::after { transform: scaleX(1); }
+
+/* =============================
+   BUTTONS (Login / Signup)
+============================= */
+.btn-login {
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: 1px solid #6979f8;
+  transition: 0.3s;
+}
+
+.btn-login:hover {
+  background: #6979f8;
+  color: white;
+}
+
+.btn-signup {
+  padding: 8px 18px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #6979f8, #9b6bff);
+  color: white;
+  transition: 0.3s;
+}
+
+.btn-signup:hover { opacity: 0.85; }
+
+/* =============================
+   MOBILE DRAWER
+============================= */
+.drawer-btn {
+  @apply w-full text-center py-2 border border-sky-navy/40 dark:border-white/40 rounded-xl;
+}
+
+.drawer-signup {
+  @apply w-full text-center py-2 bg-sky-navy text-white dark:bg-white dark:text-sky-navy rounded-xl;
+}
+
+/* prevent overlapping */
+nav a, nav button {
+  @apply relative z-50;
+}
+
+nav {
+  @apply bg-white/90 dark:bg-sky-navy/90 backdrop-blur-xl;
+}
