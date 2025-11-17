@@ -106,20 +106,47 @@ export default function Navbar() {
       `}
     >
       <div className="flex justify-between items-center px-6 md:px-16 py-4">
-
         {/* Logo */}
         <div className="flex items-center">
-          <img src="/images/logo-light.png" className="block dark:hidden w-20" alt="logo" />
-          <img src="/images/logo-dark.png" className="hidden dark:block w-20" alt="logo" />
+          <img
+            src="/images/logo-light.png"
+            className="block dark:hidden w-20"
+            alt="logo"
+          />
+          <img
+            src="/images/logo-dark.png"
+            className="hidden dark:block w-20"
+            alt="logo"
+          />
         </div>
 
         {/* Desktop Menu */}
         <ul className="hidden lg:flex items-center gap-8 font-medium">
-          <li><Link className="nav-link" to="/">Home</Link></li>
-          <li><Link className="nav-link" to="/create-card">Create Card</Link></li>
-          <li><button onClick={handleHowItWorksClick} className="nav-link">How It Works</button></li>
-          <li><Link className="nav-link" to="/about">About</Link></li>
-          <li><Link className="nav-link" to="/contact">Contact</Link></li>
+          <li>
+            <Link className="nav-link" to="/">
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link className="nav-link" to="/create-card">
+              Create Card
+            </Link>
+          </li>
+          <li>
+            <button onClick={handleHowItWorksClick} className="nav-link">
+              How It Works
+            </button>
+          </li>
+          <li>
+            <Link className="nav-link" to="/about">
+              About Us
+            </Link>
+          </li>
+          <li>
+            <Link className="nav-link" to="/contact">
+              Contact Us
+            </Link>
+          </li>
         </ul>
 
         {/* Desktop Right */}
@@ -135,13 +162,20 @@ export default function Navbar() {
             )}
           </button>
 
-          <Link to="/login" className="btn-login">Login</Link>
-          <Link to="/signup" className="btn-signup">Sign Up</Link>
+          <Link to="/login" className="btn-login">
+            Login
+          </Link>
+          <Link to="/signup" className="btn-signup">
+            Sign Up
+          </Link>
         </div>
 
         {/* Mobile Icons */}
         <div className="lg:hidden flex items-center gap-3">
-          <button onClick={toggleDarkMode} className="theme-toggle border px-3 py-2 rounded-xl">
+          <button
+            onClick={toggleDarkMode}
+            className="theme-toggle border px-3 py-2 rounded-xl"
+          >
             {darkMode ? (
               <Sun className="w-5 h-5 text-yellow-300" />
             ) : (
@@ -180,7 +214,6 @@ export default function Navbar() {
               z-[9999]
             `}
           >
-
             {/* Logo inside drawer */}
             <div className="flex justify-center mb-6">
               <img
@@ -195,8 +228,16 @@ export default function Navbar() {
               />
             </div>
 
-            <Link to="/" onClick={handleCloseMenu} className="drawer-item">Home</Link>
-            <Link to="/create-card" onClick={handleCloseMenu} className="drawer-item">Create Card</Link>
+            <Link to="/" onClick={handleCloseMenu} className="drawer-item">
+              Home
+            </Link>
+            <Link
+              to="/create-card"
+              onClick={handleCloseMenu}
+              className="drawer-item"
+            >
+              Create Card
+            </Link>
 
             <button
               onClick={() => {
@@ -208,8 +249,16 @@ export default function Navbar() {
               How It Works
             </button>
 
-            <Link to="/about" onClick={handleCloseMenu} className="drawer-item">About Us</Link>
-            <Link to="/contact" onClick={handleCloseMenu} className="drawer-item">Contact</Link>
+            <Link to="/about" onClick={handleCloseMenu} className="drawer-item">
+              About Us
+            </Link>
+            <Link
+              to="/contact"
+              onClick={handleCloseMenu}
+              className="drawer-item"
+            >
+              Contact
+            </Link>
 
             {/* Drawer Buttons */}
             <div className="w-full flex flex-col mt-4 gap-3">

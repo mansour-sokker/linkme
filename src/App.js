@@ -11,7 +11,6 @@ import ScrollToTop from "./components/ScrollToTop";
 // import PublicProfile from "./pages/PublicProfile";
 import Profile from "./pages/Profile";
 
-
 function App() {
   return (
     <Router>
