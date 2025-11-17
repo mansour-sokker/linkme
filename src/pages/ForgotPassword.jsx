@@ -1,45 +1,38 @@
 import React, { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Navbar from "../components/Navbar";
 
 const API_URL = "http://localhost:5000";
 
-export default function Login() {
-  const navigate = useNavigate();
-
+export default function ForgotPassword() {
   useEffect(() => {
     AOS.init({ duration: 900, once: true });
   }, []);
 
-  const handleLogin = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const email = e.target.email.value;
-    const password = e.target.password.value;
 
     try {
-      const res = await fetch(`${API_URL}/api/auth/login`, {
+      const res = await fetch(`${API_URL}/api/auth/forgot-password`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email }),
       });
 
       const data = await res.json();
 
       if (!res.ok) {
-        alert(data.message || "Invalid email or password ❌");
+        alert(data.message || "Something went wrong ❌");
         return;
       }
 
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("userId", data.user._id);
-      localStorage.setItem("user", JSON.stringify(data.user));
-
-      navigate("/dashboard");
-    } catch (err) {
-      console.error(err);
+      alert("Password reset link sent! Please check your inbox 📩");
+    } catch (error) {
+      console.error(error);
       alert("Server error, please try again.");
     }
   };
@@ -48,7 +41,7 @@ export default function Login() {
     <div className="min-h-screen bg-brand-light">
       <Navbar />
 
-      {/* SECTION WRAPPER */}
+      {/* WRAPPER */}
       <section className="section-shell pt-28 pb-20 flex justify-center items-start">
         <div
           data-aos="fade-up"
@@ -57,18 +50,18 @@ export default function Login() {
           {/* HEADER */}
           <div className="text-center mb-8">
             <p className="text-xs font-semibold text-brand-primary uppercase tracking-wide">
-              Welcome Back
+              Reset Password
             </p>
             <h1 className="text-3xl md:text-4xl font-extrabold text-brand-dark mt-1">
-              Log In to LinkMe
+              Forgot Your Password?
             </h1>
             <p className="text-gray-600 mt-3 text-sm">
-              Access your smart digital identity in seconds.
+              Don’t worry — we’ll send you a link to reset it.
             </p>
           </div>
 
           {/* FORM */}
-          <form onSubmit={handleLogin} className="space-y-5">
+          <form onSubmit={handleSubmit} className="space-y-5">
             {/* Email */}
             <div className="space-y-1">
               <label className="text-sm font-medium text-gray-700">
@@ -77,32 +70,18 @@ export default function Login() {
               <input
                 type="email"
                 name="email"
-                placeholder="example@mail.com"
+                placeholder="you@example.com"
                 required
                 className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-primary/40"
               />
             </div>
 
-            {/* Password */}
-            <div className="space-y-1">
-              <label className="text-sm font-medium text-gray-700">
-                Password
-              </label>
-              <input
-                type="password"
-                name="password"
-                placeholder="Your password"
-                required
-                className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-primary/40"
-              />
-            </div>
-
-            {/* Login Button */}
+            {/* Submit */}
             <button
               type="submit"
               className="btn-primary-clean w-full py-3 text-base rounded-xl shadow-md"
             >
-              Log In
+              Send Reset Link
             </button>
           </form>
 
@@ -113,23 +92,13 @@ export default function Login() {
             <div className="h-px w-1/3 bg-gray-200"></div>
           </div>
 
-          {/* Extra Options */}
+          {/* Bottom Links */}
           <div className="text-center text-sm text-gray-600">
-            <p>
-              Don’t have an account?{" "}
-              <Link
-                to="/signup"
-                className="text-brand-primary font-medium hover:underline"
-              >
-                Sign Up
-              </Link>
-            </p>
-
             <Link
-              to="/forgot-password"
-              className="text-brand-primary/70 hover:underline block mt-2"
+              to="/login"
+              className="text-brand-primary font-medium hover:underline"
             >
-              Forgot Password?
+              Back to Login
             </Link>
           </div>
         </div>
