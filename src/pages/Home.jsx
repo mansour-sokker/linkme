@@ -12,15 +12,11 @@ import Footer from "../components/Footer";
 export default function Home() {
   return (
     <div className="dark:bg-brand-dark bg-white">
-      <Navbar />
       <HeroSection />
       <WhatIs />
       <HowItWorks />
-
       <WhyChoose />
-
       <FinalCTA />
-      <Footer />
     </div>
   );
 }

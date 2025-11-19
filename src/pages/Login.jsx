@@ -46,8 +46,6 @@ export default function Login() {
 
   return (
     <div className="min-h-screen bg-brand-light">
-      <Navbar />
-
       {/* SECTION WRAPPER */}
       <section className="section-shell pt-28 pb-20 flex justify-center items-start">
         <div

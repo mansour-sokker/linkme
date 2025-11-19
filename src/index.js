@@ -5,19 +5,21 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { BrowserRouter } from "react-router-dom";
 
-// ✅ فعّلي AOS هون قبل الـ render
+// فعّلي AOS
 AOS.init({
-  duration: 1000, // مدة الأنيميشن بالميلي ثانية
-  once: true, // بيشتغل مرة وحدة بس لما يظهر العنصر
+  duration: 1000,
+  once: true,
 });
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>
 );
 
-// Optional performance tool
 reportWebVitals();

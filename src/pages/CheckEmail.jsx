@@ -11,8 +11,6 @@ export default function CheckEmail() {
 
   return (
     <div className="min-h-screen bg-brand-light">
-      <Navbar />
-
       <section className="section-shell pt-28 pb-20 flex justify-center items-start">
         <div
           data-aos="fade-up"
